@@ -1,0 +1,72 @@
+﻿@page
+@model cosmofolie.Pages.AstronomieModel
+@{
+}
+<div class="container px-4 text-center pt-5 mb-5 pb-5 rounded-3" id="heros_explo">
+    <h1 class="display-5 fw-bold text-body-emphasis" id="h1-acc">
+        exploration in all its forms
+    </h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">
+            on this page you have different articles that talk about the subject of exploration
+
+        </p>
+    </div>
+</div>
+
+
+<div class="container-fluid row g-5 mb-5 mt-5 ps-3" id="articles_main">
+    <div class="pb-4 mb-4 fst-italic border-bottom mb-5">
+        <h3>
+            Exploration
+        </h3>
+        @* @if (User.IsInRole("Administrateur"))
+        {*@
+        <a href="/Articles/creer" class="btn btn-primary">Ajouter un article</a>
+        @*   }*@
+        @* ajouter article c'est pour l'administrateur*@
+    </div>
+    <div class="col-md-8">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+
+
+            @*chager la carte pour qu'elle sois plus belle' *@
+            @*et puis faire une vue de ton article sur une autre page vue et moi je vais faire les liaissons*@
+            @*problème presque resolu manque plus qu'a trouver le problème de l'image *@
+            @if (Model.Articles != null)
+            {
+                foreach (var article in Model.Articles)
+                {
+
+                    <div class="row g-5 mb-5 mt-5 ps-3">
+                        <div class="col">
+                            <div class="card shadow-sm" id="card_art">
+
+                                <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="@Url.Content(article.Image.FilePath)" alt="Image" />
+
+
+                                <div class="card-body">
+                                    <h4>@article.Titre</h4>
+                                    <p class="card-text">@article.Contenu</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <form asp-page-handler="Supprimer" asp-route-id="@article.Id" method="post">
+                                                <button type="submit" class="btn btn-danger">Supprimer</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                }
+            }
+
+
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+﻿@page
+@model cosmofolie.Pages.CreerArticle.EditeModel
+@{
+    ViewData["Title"] = "Edit Article";
+}
+
+<h1>Edit Article</h1>
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="Article.Titre"></label>
+        <input asp-for="Article.Titre" class="form-control" />
+        <span asp-validation-for="Article.Titre" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Article.Contenu"></label>
+        <textarea asp-for="Article.Contenu" class="form-control"></textarea>
+        <span asp-validation-for="Article.Contenu" class="text-danger"></span>
+    </div>
+
+    <!-- Ajoutez d'autres champs de formulaire selon vos besoins -->
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-page="./Details" asp-route-id="@Model.Article.Id" class="btn btn-secondary">Cancel</a>
+</form>
