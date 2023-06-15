@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
+using System.Xml.Linq;
 
 namespace cosmofolie.Pages.CreerArticle;
 
@@ -32,11 +33,10 @@ public class CreerModel : PageModel
             Titre = Article.Titre,
             Contenu = Article.Contenu,
             ImageFile = Article.ImageFile,
-
         });
 
         await _context.SaveChangesAsync();
-        return RedirectToPage("./Astronomie");
+        return RedirectToPage("/Astronomie");
     }
     public class CreateVue
     {

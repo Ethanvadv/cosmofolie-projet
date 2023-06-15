@@ -1,18 +1,181 @@
-html {
-  font-size: 14px;
+:root {
+    --cl_principale: #fafafa;
+    --cl_secondaire: #fb7241;
+    --cl_contraste: #c7c7c790;
+    --cl_accentuation: #afb1b1;
+    --cl_back: #020d15ef;
+    --cl_bleu: #0d5594c1;
 }
 
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+* {
+    color: var(--cl_principale);
 }
 
 body {
-  margin-bottom: 60px;
+    background-color: var(--cl_bleu);
+}
+/*header*/
+#header {
+    background-color: var(--cl_back);
+}
+
+#nsite_orange {
+    color: var(--cl_secondaire);
+    font-weight: bold;
+    font-size: 220%;
+}
+
+#nsite_bleu {
+    color: var(--cl_principale);
+    font-weight: bold;
+    font-size: 220%;
+}
+
+#nav_a_acc {
+    color: #000000;
+    background-color: white;
+    font-weight: bold;
+}
+
+    #nav_a_acc:hover {
+        color: var(--cl_secondaire)
+    }
+
+#nav_a {
+    color: var(--cl_principale);
+}
+
+    #nav_a:hover {
+        color: var(--cl_secondaire);
+    }
+
+#btn_ln_su {
+    border: 1px solid var(--cl_principale);
+    color: var(--cl_principale);
+    font-weight: bold;
+}
+
+    #btn_ln_su:hover {
+        background-color: var(--cl_bleu);
+        color: var(--cl_secondaire);
+    }
+/* end header*/
+
+
+/* heros */
+#heros {
+    background: url("/img/pexels-johannes-plenio-1114900.jpg");
+    padding-bottom: 18%;
+}
+
+#img_heros {
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+
+#h1-acc {
+    color: var(--cl_principale);
+    padding-top: 3%;
+}
+
+/* end heros*/
+
+/*main*/
+
+#main {
+    background: url("/img/lune-mars.jpg");
+    opacity: 86%;
+    margin-top: 5%;
+    background-color: var(--cl_bleu);
+    padding: 3%;
+}
+
+.lead {
+    color: var(--cl_bleu);
+    font-weight: bold;
+}
+
+#img_main {
+    padding-right: 6%;
+}
+
+#lien_main {
+    color: var(--cl_accentuation);
+}
+/* end main*/
+
+
+/*les fiches personnelles*/
+#description {
+    background-color: var(--cl_back);
+}
+
+#fiche_nom_E {
+    font-weight: 500;
+}
+
+#fiche_E {
+    color: black;
+    background-color: var(--cl_bleu);
+}
+
+#fiche_nom_J {
+    font-weight: 500;
+}
+
+#fiche_J {
+    background-color: var(--cl_secondaire);
+}
+/* end les fiches personnelles*/
+
+
+/* footer */
+#footer {
+    background-color: var(--cl_back);
+}
+
+#footer_li {
+    color: var(--cl_principale);
+}
+/* end footer*/
+
+/*Astronomie*/
+
+#heros_Astro {
+    background: url("/img/satelite.jpg");
+    opacity: 0.89;
+}
+
+#articles_main {
+    background-color: var(--cl_back);
+}
+
+#card_art {
+    background-color: var(--cl_accentuation);
+}
+
+/* login.html */
+#bacground {
+    background-color: var(--cl_back);
+    width: auto;
+    height: 10%;
+}
+
+#login {
+    background: url"lune.jpg");
+}
+
+#floatingInput {
+    color: #000000;
+}
+/*sign up*/
+#sign_up {
+    background: url(/img/etoiles.jpg);
+}
+
+/*exploration*/
+#heros_explo {
+    background: url("/img/spacex.jpg");
+    opacity: 0.89;
 }

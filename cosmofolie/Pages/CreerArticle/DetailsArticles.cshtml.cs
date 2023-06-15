@@ -4,29 +4,29 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 
-namespace cosmofolie.Pages.CreerArticle
+namespace cosmofolie.Pages.CreerArticle;
+
+public class DetailsArticlesModel : PageModel
 {
-    public class DetailsArticlesModel : PageModel
+    private readonly ApplicationDbContext _context;
+
+    public DetailsArticlesModel(ApplicationDbContext context)
     {
-        private readonly ApplicationDbContext _context;
-
-        public DetailsArticlesModel(ApplicationDbContext context)
-        {
-            _context = context;
-        }
-
-        public Article Article { get; set; }
-
-        public async Task<IActionResult> OnGetAsync(Guid id)
-        {
-            Article = await _context.Articles
-                .Include(a => a.ImageFile)
-                .Include(a => a.Commentaires)
-                .FirstOrDefaultAsync(a => a.Id == id);
-
-            if (Article == null)
-                return NotFound();
-
-            return Page();
-        }
+        _context = context;
     }
+
+    public Article Article { get; set; }
+
+    public async Task<IActionResult> OnGetAsync(Guid id)
+    {
+        Article = await _context.Articles
+            .Include(a => a.ImageFile)
+            .Include(a => a.comments)
+            .FirstOrDefaultAsync(a => a.Id == id);
+
+        if (Article == null)
+            return NotFound();
+
+        return Page();
+    }
+}

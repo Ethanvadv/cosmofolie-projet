@@ -14,6 +14,7 @@ public class Article : Entity
 
 
     public Image Image { get; set; }
+   
     public IFormFile ImageFile { get; set; }
 
     public List<Comment> comments { get; set; }
