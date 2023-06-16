@@ -22,6 +22,7 @@
     <Folder Include="Data\Configuration\" />
     <Folder Include="Pages\Login\" />
     <Folder Include="Pages\Accunt\" />
+    <Folder Include="wwwroot\imag_stockage\" />
   </ItemGroup>
 
 </Project>

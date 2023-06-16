@@ -30,7 +30,9 @@ body {
     font-weight: bold;
     font-size: 220%;
 }
-
+#Nav_item{
+    color:rebeccapurple;
+}
 #nav_a_acc {
     color: #000000;
     background-color: white;

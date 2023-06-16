@@ -1,4 +1,27 @@
 ﻿@page
-@model cosmofolie.Pages.CreerArticle.DeletmodelModel
+@model cosmofolie.Pages.CreerArticle.Deletmodel
 @{
 }
+
+<div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Supprimer l'article'</h5>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Voulez-vous vraiment supprimer @Model.Articles.Titre ?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <form method="post">
+                    <input type="hidden" asp-for="Articles.ArticleId" />
+                    <a type="button" class="btn btn-secondary" asp-page="/Catalogs/Index">Non</a>
+                    <input class="btn btn-danger" type="submit" value="Oui">
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>

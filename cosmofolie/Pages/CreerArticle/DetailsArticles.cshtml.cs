@@ -15,18 +15,31 @@ public class DetailsArticlesModel : PageModel
         _context = context;
     }
 
-    public Article Article { get; set; }
+    public IndexView Article { get; set; } = default!;
 
-    public async Task<IActionResult> OnGetAsync(Guid id)
+    public async Task OnGetAsync(Guid id)
     {
-        Article = await _context.Articles
-            .Include(a => a.ImageFile)
-            .Include(a => a.comments)
-            .FirstOrDefaultAsync(a => a.Id == id);
 
-        if (Article == null)
-            return NotFound();
+        Article = await _context.Articles.Include(x => x.Comments)
+            .Where(x => x.Id == id)
+            .Select(x => new IndexView
+            {
+                ArticleId = x.Id,
+                Titre = x.Titre,
+                Contenu = x.Contenu,
+                Path = x.Image.Path
+            }).SingleAsync();
+    }
 
-        return Page();
+    public class IndexView
+    {
+        public Guid ArticleId { get; set; }
+
+        public string Titre { get; set; } = default!;
+        public string Contenu { get; set; } = default!;
+
+        public string Path { get; set; } = default!;
+
+        public List<Comment>? Comments { get; set; }
     }
 }

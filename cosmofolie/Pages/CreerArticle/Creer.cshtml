@@ -4,27 +4,9 @@
 }
 <h1>Create Article</h1>
 
-@*<form method="post">
-    <div class="form-group">
-        <label asp-for="Article.Titre"></label>
-        <input asp-for="Article.Titre" class="form-control" />
-        <span asp-validation-for="Article.Titre" class="text-danger"></span>
-    </div>
-
-    <div class="form-group">
-        <label asp-for="Article.Contenu"></label>
-        <textarea asp-for="Article.Contenu" class="form-control"></textarea>
-        <span asp-validation-for="Article.Contenu" class="text-danger"></span>
-    </div>
-
-
-
-    <button type="submit" class="btn btn-primary">Create</button>
-</form*@>
-
 <div class="row">
     <div class="col">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Article.Titre" class="control-label">
@@ -41,12 +23,8 @@
                 <span asp-validation-for="Article.Contenu" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Article.Image" class="control-label">Image</label>
-                <select asp-for="Article.Image" type="file" class="form-control-file" id="image" name="ImageFile"></select>
-            </div>
-            <div class="form-group">
-                <label for="image">Image:</label>
-                <input type="file" class="form-control-file" id="image" name="ImageFile" />
+                <label asp-for="Article.ImageFile">Image:</label>
+                <input asp-for="Article.ImageFile" class="form-control-file" />
             </div>
             <div class="form-group mt-2">
                 <input type="submit" value="Créer le film" class="btn btn-primary" />

@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace cosmofolie.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext :IdentityDbContext<User>
     {
         public DbSet<Article> Articles { get; set; }
         public DbSet<Image> Images { get; set; }
@@ -16,7 +16,7 @@ namespace cosmofolie.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+           
 
             modelBuilder.Entity<Article>()
                 .HasKey(article => article.Id);
@@ -27,15 +27,17 @@ namespace cosmofolie.Data
                 .HasForeignKey<Image>(article => article.ArticleId);
 
             modelBuilder.Entity<Article>()
-                .HasMany(article => article.comments) // Définition de la relation un-à-plusieurs
+                .HasMany(article => article.Comments) // Définition de la relation un-à-plusieurs
                 .WithOne(comment => comment.Article)
-                .HasForeignKey(comment => comment.Id); // Clé étrangère dans la table Comment
+                .HasForeignKey(comment => comment.ArticleId); // Clé étrangère dans la table Comment
 
             modelBuilder.Entity<Image>()
                 .HasKey(image => image.Id);
 
             modelBuilder.Entity<Comment>()
                 .HasKey(comment => comment.Id);
+
+            base.OnModelCreating(modelBuilder); 
         }
     }
 }

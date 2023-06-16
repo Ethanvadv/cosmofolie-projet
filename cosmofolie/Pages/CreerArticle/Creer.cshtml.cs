@@ -1,5 +1,6 @@
 using cosmofolie.Data;
 using cosmofolie.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
@@ -12,10 +13,12 @@ public class CreerModel : PageModel
 {
 
     private readonly ApplicationDbContext _context;
+    private readonly IWebHostEnvironment _webHostEnvironment;
 
-    public CreerModel(ApplicationDbContext context)
+    public CreerModel(ApplicationDbContext context,IWebHostEnvironment webHostEnvironment)
     {
         _context = context;
+        _webHostEnvironment = webHostEnvironment;
     }
 
     [BindProperty]
@@ -27,12 +30,24 @@ public class CreerModel : PageModel
         {
             return Page();
         }
+        var fileName = Guid.NewGuid() + Path.GetExtension(Article.ImageFile.FileName);
+        var imageUrl = Path.Combine(_webHostEnvironment.WebRootPath, "imag_stockage", fileName);
+        var urls = imageUrl.Split("wwwroot");
+
+        await using var stream = new FileStream(imageUrl, FileMode.Create);
+
+        await Article.ImageFile.CopyToAsync(stream);
+
 
         _context.Articles.Add(new Article
         {
             Titre = Article.Titre,
             Contenu = Article.Contenu,
-            ImageFile = Article.ImageFile,
+            Image = new Image 
+            {
+                FileName = fileName,
+                Path = urls[1]
+            }
         });
 
         await _context.SaveChangesAsync();
@@ -46,12 +61,8 @@ public class CreerModel : PageModel
         [Required(ErrorMessage = "Le contenu est requis.")]
         public string Contenu { get; set; }
 
-
-        public Image Image { get; set; }
+        [Required]
         public IFormFile ImageFile { get; set; }
-
-        public List<Comment> comments { get; set; }
-
     }
 }
 

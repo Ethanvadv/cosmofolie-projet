@@ -2,7 +2,9 @@ using cosmofolie.Data;
 using cosmofolie.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace cosmofolie.Pages.CreerArticle;
 
@@ -16,42 +18,70 @@ public class EditModel : PageModel
     }
 
     [BindProperty]
-    public Article Article { get; set; }
+    public EditView Article { get; set; } = default!;
 
-    public async Task<IActionResult> OnGetAsync(Guid id)
+    public async Task<IActionResult> OnGetAsync(Guid? id)
     {
-        Article = await _context.Articles.FindAsync(id);
-
-        if (Article == null)
+        if (id == null)
+        {
             return NotFound();
+        }
 
+        var article = await _context.Articles
+            .AsNoTracking()
+            .Where(article => article.Id == id)
+            .Select(a=> new EditView
+            {
+                ArticleId = a.Id,
+                Titre = a.Titre,
+                Contenu = a.Contenu,
+                
+                IsTrend = a.IsTrend,
+            })
+            .FirstOrDefaultAsync();
+
+        if (article is null)
+        {
+            return NotFound();
+        }
+
+        article = Article;
         return Page();
     }
 
     public async Task<IActionResult> OnPostAsync()
     {
         if (!ModelState.IsValid)
+        {
             return Page();
-
-        _context.Attach(Article).State = EntityState.Modified;
-
-        try
-        {
-            await _context.SaveChangesAsync();
-        }
-        catch (DbUpdateConcurrencyException)
-        {
-            if (!ArticleExists(Article.Id))
-                return NotFound();
-            else
-                throw;
         }
 
+        var article = await _context.Articles
+            .SingleOrDefaultAsync(x => x.Id == Article.ArticleId);
+
+        if (article is null)
+        {
+            return NotFound();
+        }
+
+
+        await _context.SaveChangesAsync();
         return RedirectToPage("./Index");
     }
 
-    private bool ArticleExists(Guid id)
+    public class EditView
     {
-        return _context.Articles.Any(a => a.Id == id);
+        [Required]
+        public Guid ArticleId { get; set; }
+
+        [Required]
+        public string Titre { get; set; } = default!;
+        [Required]
+        public string Contenu { get; set; } = default!;
+
+        [Required]
+        public bool IsTrend { get; set; }
+
+        public Guid? Image { get; set; }
     }
 }

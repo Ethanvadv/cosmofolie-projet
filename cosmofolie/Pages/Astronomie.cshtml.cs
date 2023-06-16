@@ -10,15 +10,30 @@ public class AstronomieModel : PageModel
 {
     private readonly ApplicationDbContext _context;
 
-    public List<Article> Articles { get; set; }
-
     public AstronomieModel(ApplicationDbContext context)
     {
         _context = context;
     }
 
+    public IList<ArticleView> Article { get; set; } = default!;
+
     public async Task OnGetAsync()
     {
-        Articles = await _context.Articles.ToListAsync();
+        Article = await _context.Articles
+            .Select(x => new ArticleView
+            {
+                ArticleId = x.Id,
+                Titre = x.Titre,
+                Contenu = x.Contenu
+            })
+            .OrderBy(x => x.Titre)
+            .ToListAsync();
+    }
+
+    public class ArticleView
+    {
+        public Guid ArticleId { get; init; }
+        public string Titre { get; init; } = default!;
+        public string Contenu { get; init; } = default!;
     }
 }
