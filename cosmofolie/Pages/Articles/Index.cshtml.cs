@@ -43,29 +43,4 @@ public class DetailsArticlesModel : PageModel
 
         public List<Comment>? Comments { get; set; }
     }
-
-    //    [BindProperty]
-    //    public CommentsVue Commentaire { get; set; }
-
-    //    public void OnPostAjouterCommentaire()
-    //    {
-    //        if (!string.IsNullOrEmpty(NouveauCommentaire))
-    //        {
-    //            using (var context = new ApplicationDbContext())
-    //            {
-    //                var commentaire = new CommentsVue
-    //                {
-    //                    Content = NouveauCommentaire
-    //                };
-
-    //                context.Comments.Add(commentaire);
-    //                context.SaveChanges();
-    //            }
-    //        }
-    //    }
-    //public class CommentsVue
-    //{
-    //    public string Content { get; set; } = default!;
-    //    public DateTime CreatedAt { get; set; }
-    //}
 }

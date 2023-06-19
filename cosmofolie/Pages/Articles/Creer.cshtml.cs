@@ -10,7 +10,7 @@ using System.Xml.Linq;
 
 namespace cosmofolie.Pages.CreerArticle;
 
-//[Authorize(Roles = Constants.AdminRole)]
+[Authorize(Roles = Constants.AdminRole)]
 public class CreerModel : PageModel
 {
 

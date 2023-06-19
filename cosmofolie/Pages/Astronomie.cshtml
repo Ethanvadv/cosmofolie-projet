@@ -1,4 +1,5 @@
 ﻿@page
+@using cosmofolie.Models;
 @model cosmofolie.Pages.AstronomieModel
 @{
 }
@@ -17,26 +18,32 @@
 
 <div class="container-fluid row g-5 mb-5 mt-5 ps-3" id="articles_main">
     <div class="pb-4 mb-4 fst-italic border-bottom mb-5">
-        <h3>
-            Exploration
-        </h3>
-        <a href="Articles/creer" class="btn btn-primary">Ajouter un article</a>
+            <h3>
+             Exploration
+             -</h3>
+         @if (User.IsInRole(Constants.AdminRole))
+         {
+           <a href="Articles/creer" class="btn btn-primary">Ajouter un article</a>
+         }
     </div>
         <div class="album py-5 bg-body-tertiary">
             <div class="col-md-8">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    @if (Model.Article != null)
+                @if (Model.Article != null)
+                {
+                    foreach (var article in Model.Article)
                     {
-                        foreach (var article in Model.Article)
-                        {
+                        var maxLength = 50; // Nombre maximal de caractères avant les trois petits points
+                        var trimmedContenu = article.Contenu.Length > maxLength ? article.Contenu.Substring(0, maxLength) + "..." : article.Contenu;
+
                         <div class="row g-5 mb-5 mt-5 ps-3">
-                        <a asp-page="Articles/Index" asp-route-id="@article.ArticleId">
+                            <a asp-page="Articles/Index" asp-route-id="@article.ArticleId">
                                 <div class="col">
                                     <div class="card shadow-sm" id="card_art">
                                         <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="@Url.Content(article.Path)" alt="Image" />
                                         <div class="card-body">
                                             <h4>@article.Titre</h4>
-                                            <p class="card-text">@article.Contenu</p>
+                                            <p class="card-text">@trimmedContenu</p>
                                             <div class="d-flex justify-content-between align-items-center">
                                             </div>
                                         </div>
@@ -44,9 +51,8 @@
                                 </div>
                             </a>
                         </div>
-                        }
                     }
-                        
+                }         
        </div>
     </div>
 </div>

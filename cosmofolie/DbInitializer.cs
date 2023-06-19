@@ -12,6 +12,16 @@ public static class DbInitializer
         context.Database.EnsureDeleted();
         context.Database.EnsureCreated();
 
+
+        context.Set<Article>()
+            .Add(new Article
+            {
+                Titre = "Les premières images du télescope spatial James Webb",
+                Contenu = " Il y a quelques jours de cela, les astronomes ont dévoilé les premières images prises par le télescope spatial James Webb," +
+                " qui orbite autour du Soleil, à une distance d'environ 1,5 million de km de la Terre.\r\n\r\nLes images renvoyées étaient issues d'un" +
+                " essai visant à tester l'alignement des instruments de ce fabuleux engin qui a couté la faramineuse somme de 10 milliards de dollars à développer." +
+                "Découvrons donc ces premières images de ce télescope 100 fois plus puissants que l'ancien télescope spatial Hubble!",
+            }); 
         roleManager.CreateAsync(new IdentityRole(Constants.AdminRole)).GetAwaiter().GetResult();
 
   
@@ -24,5 +34,7 @@ public static class DbInitializer
             .GetResult();
 
         context.SaveChanges();
+
+
     }
 }

@@ -1,11 +1,12 @@
 ﻿@page
+@using cosmofolie.Models;
 @model cosmofolie.Pages.CreerArticle.DetailsArticlesModel
 @*@{
     var isSignIn = SignInManager.IsSignedIn(User);
 }
 *@
 
-<div class="container">
+<div class="container-fluid pb-5 pt-5" style = "background-color: grey ">
     <div class="row">
         
         <div class="col-4">
@@ -13,13 +14,14 @@
         </div>
         <div class="col-8">
             <h1>@Model.Article.Titre</h1>
+            <p>@Model.Article.Contenu</p>
             <p>@Model.Article.Comments</p>
 
             <div>
 
 
-          @*  @if (isSignIn)
-            {*@
+            @if (User.IsInRole(Constants.AdminRole))
+            {
                 <div class="d-grid gap-2 d-md-block">
                     <a class="btn btn-primary" type="button" asp-page="Edite" asp-route-id="@Model.Article.ArticleId">
                         <i class="bi bi-pencil"></i>
@@ -30,7 +32,7 @@
                         Supprimer
                     </a>
                 </div>
-           @* }*@
+            }
         </div>
     </div>
-    
+       @*autorisation . commentaire . le visuel . roleAdmin *@

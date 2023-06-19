@@ -1,13 +1,15 @@
 using cosmofolie.Data;
 using cosmofolie.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using System.Data;
 
 namespace cosmofolie.Pages.CreerArticle;
 
+[Authorize(Roles = Constants.AdminRole)]
 public class EditModel : PageModel
 {
     private readonly ApplicationDbContext _context;
