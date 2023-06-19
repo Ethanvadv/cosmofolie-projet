@@ -24,7 +24,8 @@ public class AstronomieModel : PageModel
             {
                 ArticleId = x.Id,
                 Titre = x.Titre,
-                Contenu = x.Contenu
+                Contenu = x.Contenu,
+                Path = x.Image.Path
             })
             .OrderBy(x => x.Titre)
             .ToListAsync();
@@ -35,5 +36,8 @@ public class AstronomieModel : PageModel
         public Guid ArticleId { get; init; }
         public string Titre { get; init; } = default!;
         public string Contenu { get; init; } = default!;
+
+        public string Path { get; set; } = default!;
     }
 }
+

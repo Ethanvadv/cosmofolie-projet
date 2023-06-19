@@ -14,8 +14,11 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
+builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
+    
+
 
 builder.Services.AddRazorPages();
 
@@ -56,7 +59,9 @@ static void ResetDatabase(IServiceProvider serviceProvider)
     try
     {
         var dbContext = services.GetRequiredService<ApplicationDbContext>();
-        DbInitializer.Initialize(dbContext);
+        var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+        var userManager = services.GetRequiredService<UserManager<User>>();
+        DbInitializer.Initialize(dbContext, roleManager, userManager );
     }
     catch (Exception ex)
     {

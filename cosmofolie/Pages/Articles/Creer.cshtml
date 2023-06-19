@@ -4,7 +4,7 @@
 }
 <h1>Create Article</h1>
 
-<div class="row">
+<div class="row container ">
     <div class="col">
         <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
@@ -17,7 +17,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Article.Contenu" class="control-label">
-                    Synopsis du film
+                    Contenu de l'article
                 </label>
                 <textarea asp-for="Article.Contenu" class="form-control"></textarea>
                 <span asp-validation-for="Article.Contenu" class="text-danger"></span>

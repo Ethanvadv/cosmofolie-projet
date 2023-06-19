@@ -35,8 +35,7 @@ public class EditModel : PageModel
                 ArticleId = a.Id,
                 Titre = a.Titre,
                 Contenu = a.Contenu,
-                
-                IsTrend = a.IsTrend,
+                IsTrend = a.IsTrend
             })
             .FirstOrDefaultAsync();
 
@@ -45,7 +44,7 @@ public class EditModel : PageModel
             return NotFound();
         }
 
-        article = Article;
+        Article = article;
         return Page();
     }
 
@@ -64,9 +63,13 @@ public class EditModel : PageModel
             return NotFound();
         }
 
+        article.Titre = Article.Titre;
+        article.Contenu = Article.Contenu;
+      
+
 
         await _context.SaveChangesAsync();
-        return RedirectToPage("./Index");
+        return RedirectToPage("./Index", new { id = article.Id.ToString() });
     }
 
     public class EditView
@@ -81,7 +84,5 @@ public class EditModel : PageModel
 
         [Required]
         public bool IsTrend { get; set; }
-
-        public Guid? Image { get; set; }
     }
 }

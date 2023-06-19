@@ -1,5 +1,6 @@
 using cosmofolie.Data;
 using cosmofolie.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -9,6 +10,7 @@ using System.Xml.Linq;
 
 namespace cosmofolie.Pages.CreerArticle;
 
+//[Authorize(Roles = Constants.AdminRole)]
 public class CreerModel : PageModel
 {
 

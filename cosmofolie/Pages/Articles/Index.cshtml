@@ -1,12 +1,13 @@
 ﻿@page
 @model cosmofolie.Pages.CreerArticle.DetailsArticlesModel
-@{
+@*@{
     var isSignIn = SignInManager.IsSignedIn(User);
 }
-
+*@
 
 <div class="container">
     <div class="row">
+        
         <div class="col-4">
             <img src="@Model.Article.Path" class="img-fluid" alt="">
         </div>
@@ -17,19 +18,19 @@
             <div>
 
 
-            @if (isSignIn)
-            {
+          @*  @if (isSignIn)
+            {*@
                 <div class="d-grid gap-2 d-md-block">
-                    <a class="btn btn-primary" type="button" asp-page="/Movies/Edit" asp-route-id="@Model.Article.ArticleId">
+                    <a class="btn btn-primary" type="button" asp-page="Edite" asp-route-id="@Model.Article.ArticleId">
                         <i class="bi bi-pencil"></i>
                         Editer
                     </a>
-                    <a class="btn btn-danger" type="button" asp-page="/Movies/Delete" asp-route-id="@Model.Article.ArticleId">
+                    <a class="btn btn-danger" type="button" asp-page="Deletmodel" asp-route-id="@Model.Article.ArticleId">
                         <i class="bi bi-trash"></i>
                         Supprimer
                     </a>
                 </div>
-            }
+           @* }*@
         </div>
     </div>
-</div>
+    

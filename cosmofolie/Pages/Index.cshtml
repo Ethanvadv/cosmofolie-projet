@@ -1,28 +1,29 @@
 ﻿@page
 @model IndexModel
 
+
 <div class="container-fluid px-4 text-center pt-5 border-bottom border-top"
      id="heros">
-<h1 class="display-5 fw-bold text-body-emphasis" id="h1-acc">
-    L'espace dans sa transparance
-</h1>
-<div class="col-lg-6 mx-auto">
-    <p class="lead mb-4">
-        l'actualiter dans tout c'est état, vous voulez savoir se qu'il se
-        passe dans le monde, c'est ici que ca se passe.
-    </p>
+    <h1 class="display-5 fw-bold text-body-emphasis" id="h1-acc">
+        L'espace dans sa transparance
+    </h1>
+    <div class="col-lg-6 mx-auto">
+        <p class="lead mb-4">
+            l'actualiter dans tout c'est état, vous voulez savoir se qu'il se
+            passe dans le monde, c'est ici que ca se passe.
+        </p>
 
-    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-        <a asp-page="/Articles/Creer" class="btn me-8 " id="btn_ln_su">
-            <button type="button" class="btn me-8" id="btn_ln_su">Login</button>
-        </a>
+        <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <a asp-page="/Articles/Creer" class="btn me-8 " id="btn_ln_su">
+                <button type="button" class="btn me-8" id="btn_ln_su">Login</button>
+            </a>
 
-        </a>
-        <a asp-page="/Account/Inscription" class="btn me-8 " id="btn_ln_su">
-            <button type="button" class="btn me-8" id="btn_ln_su">Login</button>
-        </a>
+            </a>
+            <a asp-page="/Account/Inscription" class="btn me-8 " id="btn_ln_su">
+                <button type="button" class="btn me-8" id="btn_ln_su">Login</button>
+            </a>
+        </div>
     </div>
-</div>
 </div>
 
 <div class="container-fluid border-bottom border-top" id="main">
@@ -54,34 +55,34 @@
             <div class="col-lg-4 pe-5">
                 <img class="bd-placeholder-img pb-3"
                      src="https://picsum.photos/140/140?grayscale random=1" />
-                <h2 class="fw-normal">la fusée mxb1</h2>
+                <h2 class="fw-normal">La fusée mxb1</h2>
                 <p class="lead">
                     Some representative placeholder content for the three columns of
                     text below the carousel. This is the first column.
                 </p>
-                <p><a class="btn btn-light" class="btn-main" href="#">See more </a></p>
+                <p><a class="btn btn-light" class="btn-main" id="btnPerso" href="#">See more </a></p>
             </div>
 
             <div class="col-lg-4 pe-5">
                 <img class="bd-placeholder-img pb-3"
                      src="https://picsum.photos/140/140?grayscale random=2" />
-                <h2 class="fw-normal">les trous noirs</h2>
+                <h2 class="fw-normal">Les trous noirs</h2>
                 <p class="lead">
                     Another exciting bit of representative placeholder content. This
                     time, we've moved on to the second column.
                 </p>
-                <p><a class="btn btn-light" class="btn-main" href="#">See more </a></p>
+                <p><a class="btn btn-light" class="btn-main" id="btnPerso" href="#">See more </a></p>
             </div>
 
             <div class="col-lg-4 pe-5">
                 <img class="bd-placeholder-img pb-3"
                      src="https://picsum.photos/140/140?grayscale random=3" />
-                <h2 class="fw-normal">éclipse lunaire</h2>
+                <h2 class="fw-normal">Éclipse lunaire</h2>
                 <p class="lead">
                     And lastly this, the third column of representative placeholder
                     content.
                 </p>
-                <p><a class="btn btn-light" class="btn-main" href="#">See more </a></p>
+                <p><a class="btn btn-light" class="btn-main" id="btnPerso" href="#">See more </a></p>
             </div>
         </div>
     </div>
@@ -89,9 +90,9 @@
 
 <div class="container mt-5 rounded-3" id="description">
     <div class="p-3 pb-mb-4 mx-auto text-center">
-        <h1 class="display-4 fw-normal">Qui somme nous</h1>
+        <h1 class="display-4 fw-normal">Qui sommes nous?</h1>
         <p class="fs-5 text-body-secondary">
-            Nous somme de jeunes etudiant, nous étudions a la haute école CKL.
+            Nous sommes de jeunes étudiants à l'IFAPME en tant que Web Dev.
             C'est notre projet de fin d'année, on a crée ceci pour avoir aucun
             tabou sur le domaine de l'actualité
         </p>
@@ -99,26 +100,27 @@
 
     <div class="container pb-5">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6" id="xyz">
                 <div class="h-100 p-5  rounded-3" id="fiche_E">
-                    <h2 id="fiche_nom_E">Vande Ven Ethan</h2>
-                    <p>
-                        apprenti développeur web front-end, je suis en première année.
+                    <h2 id="fiche_nom_du2emeplusbeau">Vande Ven Ethan</h2>
+                    <p id="fiche_nom_du2emeplusbeau">
+                        Apprenti développeur web front-end, je suis en première année.
                         Ce projet est Pour mon examen de fin d'année
                     </p>
-                    <button class="btn btn-outline-light" type="button">
+                    <button class="btn btn-outline-dark" id="bouton_du2emeplusbeau" type="button">
                         Ma fiche personnelle
                     </button>
+
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="h-100 p-5  border rounded-3" id="fiche_J">
-                    <h2 id="fiche_nom_J">Joen Doe</h2>
-                    <p>
-                        En dernière année de journaliste, j'ai coopérer avec Ethan pour
-                        mettre mes articles au grand jour.
+                <div class="h-100 p-5  border rounded-3" id="fiche_nom_duplusbeau">
+                    <h2 id="fiche_nom_duplusbeau">Ngo Christopher</h2>
+                    <p id="fiche_nom_duplusbeauP">
+                        Apprenti développeur web front-end, je suis en première année.
+                        Ce projet est Pour mon examen de fin d'année
                     </p>
-                    <button class="btn btn btn-outline-dark" type="button">
+                    <button class="btn btn btn-outline-light" id="bouton_duplusbeau" type="button">
                         Ma fiche personnelle
                     </button>
                 </div>
@@ -126,3 +128,4 @@
         </div>
     </div>
 </div>
+

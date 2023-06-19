@@ -1,0 +1,42 @@
+﻿@page
+@model cosmofolie.Pages.CreerArticle.EditModel;
+@{
+    ViewData["Title"] = "Edit Article";
+}
+
+<h1>
+    <a asp-page="Index" asp-route-id="@Model.Article.ArticleId"><i class="bi bi-arrow-left"></i></a>
+    Edition d'un article.
+</h1>
+<hr>
+<div class="row">
+    <div>
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Article.Titre" class="control-label">
+                    Titre de l'article
+                </label>
+                <input asp-for="Article.Titre" class="form-control" />
+                <span asp-validation-for="Article.Titre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Article.Contenu" class="control-label">
+                   Contenue de l'article
+                </label>
+                <input asp-for="Article.Contenu" class="form-control" />
+                <span asp-validation-for="Article.Contenu" class="text-danger"></span>
+            </div>
+            <div class="input-group mt-3">
+                <div class="input-group-text">
+                    <input class="form-check-input mt-0" asp-for="Article.IsTrend">
+                </div>
+                <label class="form-control">Je suis un film tendance</label>
+            </div>
+            <input type="hidden" asp-for="Article.ArticleId" />
+            <div class="form-group mt-2">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>

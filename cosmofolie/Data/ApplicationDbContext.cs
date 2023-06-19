@@ -9,6 +9,9 @@ namespace cosmofolie.Data
         public DbSet<Article> Articles { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Comment> Comments { get; set; }
+  
+
+
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
@@ -23,8 +26,8 @@ namespace cosmofolie.Data
 
             modelBuilder.Entity<Article>()
                 .HasOne(article => article.Image)
-                .WithOne()
-                .HasForeignKey<Image>(article => article.ArticleId);
+                .WithOne(x => x.Article)
+                .HasForeignKey<Image>(image => image.ArticleId);
 
             modelBuilder.Entity<Article>()
                 .HasMany(article => article.Comments) // Définition de la relation un-à-plusieurs
@@ -36,6 +39,11 @@ namespace cosmofolie.Data
 
             modelBuilder.Entity<Comment>()
                 .HasKey(comment => comment.Id);
+            modelBuilder.Entity<Comment>()
+             .HasOne(comment => comment.User)
+             .WithMany(user => user.Comments)
+             .HasForeignKey(comment => comment.UserId);
+
 
             base.OnModelCreating(modelBuilder); 
         }
