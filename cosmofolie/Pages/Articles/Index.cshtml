@@ -1,10 +1,11 @@
 ﻿@page
 @using cosmofolie.Models;
-@model cosmofolie.Pages.CreerArticle.DetailsArticlesModel
-@*@{
-    var isSignIn = SignInManager.IsSignedIn(User);
+@model cosmofolie.Pages.Articles.DetailsArticlesModel;
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+@{
+    var comments = Model.Article.Comments;
 }
-*@
 
 <div class="container-fluid pb-5 pt-5" style = "background-color: grey ">
     <div class="row">
@@ -20,19 +21,54 @@
             <div>
 
 
-            @if (User.IsInRole(Constants.AdminRole))
-            {
-                <div class="d-grid gap-2 d-md-block">
-                    <a class="btn btn-primary" type="button" asp-page="Edite" asp-route-id="@Model.Article.ArticleId">
-                        <i class="bi bi-pencil"></i>
-                        Editer
-                    </a>
-                    <a class="btn btn-danger" type="button" asp-page="Deletmodel" asp-route-id="@Model.Article.ArticleId">
-                        <i class="bi bi-trash"></i>
-                        Supprimer
-                    </a>
-                </div>
-            }
+                @if (User.IsInRole(Constants.AdminRole))
+                {
+                    <div class="d-grid gap-2 d-md-block">
+                        <a class="btn btn-primary" type="button" asp-page="Edite" asp-route-id="@Model.Article.ArticleId">
+                            <i class="bi bi-pencil"></i>
+                            Editer
+                        </a>
+                        <a class="btn btn-danger" type="button" asp-page="Deletmodel" asp-route-id="@Model.Article.ArticleId">
+                            <i class="bi bi-trash"></i>
+                            Supprimer
+                        </a>
+                    </div>
+                }
+            </div>
         </div>
-    </div>
-       @*autorisation . commentaire . le visuel . roleAdmin *@
+     </div>
+</div>
+
+<h3>Comments</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Content</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var comment in comments)
+        {
+            <tr>
+                <td>@comment.Content</td>
+                <td>
+                  @*  <a asp-page="./Edit" asp-route-id="@comment.Id">Edit</a> |
+                    <a asp-page="./Delete" asp-route-id="@comment.Id">Delete</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@if (SignInManager.IsSignedIn(User))
+{
+    <form method="post">
+        <input type="hidden" asp-for="CreateViews.ArticleId">
+        <div class="form-group">
+            <label asp-for="CreateViews.Content" class="control-label"></label>
+            <input asp-for="CreateViews.Content" class="form-control" />
+            <span asp-validation-for="CreateViews.Content" class="text-danger"></span>
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+}

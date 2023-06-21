@@ -49,11 +49,6 @@ public class InscriptionModel : PageModel
                     // Gérer ici les actions à effectuer après l'inscription réussie, par exemple, rediriger vers une page de connexion
                     return RedirectToPage("/Login/Login");
                 }
-
-            //foreach (var error in result.errors)
-            //{
-            //    modelstate.addmodelerror(string.empty, error.description);
-            //}
             return Page();
             }
         

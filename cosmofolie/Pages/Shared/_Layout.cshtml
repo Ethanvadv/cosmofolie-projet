@@ -17,15 +17,16 @@
     <link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container-fluid" id="header">
-        <header class="d-flex flex-wrap justify-content-between py-3 mb-5 border-bottom">
+    <div class="container-fluid border-bottom" id="header">
+        <header class="d-flex flex-wrap justify-content-between py-3">
             <a href="index.html"
                class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-                <span id="nsite_orange">Mot</span>
-                <span id="nsite_bleu">sion</span>
+                <span id="btn_ln_su3 ">Cosmo</span>
+                <span id="btn_ln_su3">Folie</span>
             </a>
 
             <ul class="nav" id="Nav_item_custom">
+
                 <li class="nav-item">
                     <a asp-page="/Index" class="nav-link">Accueil</a>
                 </li>
@@ -36,7 +37,7 @@
                     <a asp-page="/Exploration" class="nav-link">Exploration</a>
                 </li>
                 <li class="nav-item">
-                    <a asp-page="/A-propos" class="nav-link">A propos</a>
+                    <a asp-page="/Apropos" class="nav-link">A propos</a>
                 </li>
 
             </ul>
@@ -56,19 +57,18 @@
                 <a asp-page="/login/Login" class="btn me-1" id="btn_ln_su1">Login</a>
                 <a asp-page="/Accunt/Inscription" class="btn me-1 " id="btn_ln_su2">Sign-up</a>
             }
-            
-            
+
         </header>
     </div>
 
-    <div class="container-fluid">
-        <main role="main" class="pb-3">
+    <div>
+        <main role="main" class="ExplorationStyle" style="min-height: calc(100vh - 98px - 123px)">
             @RenderBody()
         </main>
     </div>
 
-    <div class="container-fluid" id="footer">
-        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top border-white pb-5"
+    <div class="container-fluid border-top border-white" id="footer">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 pb-5"
                 id="footer">
             <p class="col-md-4 mb-0 text-body-secondary" id="CopyrightPerso">© 2023 CosmoFolieBitches Company, Inc</p>
 
@@ -81,16 +81,16 @@
 
             <ul class="nav col-md-4 justify-content-end">
                 <li class="nav-item">
-                    <a href="#" class="nav-link px-2 text-body-secondary footer_li">Accueil</a>
+                    <a asp-page="/Index" class="nav-link px-2 text-body-secondary footer_li">Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link px-2 text-body-secondary footer_li">Astronomie</a>
+                    <a asp-page="/Astronomie" class="nav-link px-2 text-body-secondary footer_li">Astronomie</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link px-2 text-body-secondary footer_li">Exploration</a>
+                    <a asp-page="/Exploration" class="nav-link px-2 text-body-secondary footer_li">Exploration</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link px-2 text-body-secondary footer_li">A propos</a>
+                    <a asp-page="/Apropos" class="nav-link px-2 text-body-secondary footer_li">A propos</a>
                 </li>
             </ul>
         </footer>

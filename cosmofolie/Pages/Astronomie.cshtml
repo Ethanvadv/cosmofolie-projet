@@ -3,32 +3,39 @@
 @model cosmofolie.Pages.AstronomieModel
 @{
 }
-<div class="container px-4 text-center pt-5 mb-5 pb-5 rounded-3" id="heros_explo">
-    <h1 class="display-5 fw-bold text-body-emphasis" id="h1-acc">
-        exploration in all its forms
-    </h1>
-    <div class="col-lg-6 mx-auto">
-        <p class="lead mb-4">
-            on this page you have different articles that talk about the subject of exploration
 
-        </p>
+
+
+<body class="ExplorationStyle">
+
+
+
+    <div class="container px-4 text-center pt-5 mb-5 pb-5 rounded-3" id="heros">
+        <h1 class="h1perso display-5 fw-bold text-body-emphasis" id="h1-acc">
+            Exploration in all its forms
+        </h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead pb-4 mb-4 fst-italic border-bottom mb-5">
+                Section vide. N'hésitez pas à y contribuer de n'importe quelle manière
+
+            </p>
+        </div>
     </div>
-</div>
 
 
-<div class="container-fluid row g-5 mb-5 mt-5 ps-3" id="articles_main">
-    <div class="pb-4 mb-4 fst-italic border-bottom mb-5">
-            <h3>
-             Exploration
-             -</h3>
-         @if (User.IsInRole(Constants.AdminRole))
-         {
-           <a href="Articles/creer" class="btn btn-primary">Ajouter un article</a>
-         }
+    <div class="text-center pb-4 mb-4 fst-italic border-bottom mb-5 justify-content-center align-items-center alignerbtnprs ">
+
+        @if (User.IsInRole(Constants.AdminRole))
+        {
+            <a href="Articles/creer" class=" btn btnCreerFilm btn-primary">Ajouter un article</a>
+        }
     </div>
-        <div class="album py-5 bg-body-tertiary">
-            <div class="col-md-8">
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+
+
+
+    <div class="album py-5 bg-body-tertiary">
+        <div class="col-md-8">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                 @if (Model.Article != null)
                 {
                     foreach (var article in Model.Article)
@@ -40,7 +47,7 @@
                             <a asp-page="Articles/Index" asp-route-id="@article.ArticleId">
                                 <div class="col">
                                     <div class="card shadow-sm" id="card_art">
-                                        <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="@Url.Content(article.Path)" alt="Image" />
+                                        <img class="bd-placeholder-img card-img-top" width="200" height="325" src="@Url.Content(article.Path)" alt="Image" />
                                         <div class="card-body">
                                             <h4>@article.Titre</h4>
                                             <p class="card-text">@trimmedContenu</p>
@@ -52,7 +59,9 @@
                             </a>
                         </div>
                     }
-                }         
-       </div>
+                }
+            </div>
+        </div>
     </div>
-</div>
+    </>
+</body>

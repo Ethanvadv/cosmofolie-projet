@@ -5,17 +5,19 @@
 <div class="container text-center pt-5 pb-5" id="login">
     <main class="form-signin w-50 m-auto ">
 
-        <form method="post" class="container">
-            <div class="form-group pt-3">
-                <label asp-for="Input.Email">Adresse e-mail</label>
-                <input type="email" class="form-control" id="email" name="email" required />
-            </div>
-            <div class="form-group pt-6">
-                <label asp-for="Input.Password">Mot de passe</label>
-                <input type="password" class="form-control" id="password" name="password" required />
-            </div>
-            <button type="submit" class="w-50 btn btn-lg btn-primary">Se connecter</button>
-        </form>
+        <form method="post" class="container" style="mb-5">
 
+            <div class="form-group pt-3">
+                <label asp-for="Input.Email" class="signInLabel">Adresse e-mail</label>
+                <input type="email" maxlength="50" class="form-control" id="email" name="email" required />
+            </div>
+
+            <div class="form-group pt-6">
+                <label asp-for="Input.Password" class="signInLabel">Mot de passe</label>
+                <input type="password" maxlength="50" class="form-control" id="password" name="password" required />
+            </div>
+
+            <button type="submit" class="w-50 btnLoginLogin btn btn-sm btn-dark">Se connecter</button>
+        </form>
     </main>
 </div>

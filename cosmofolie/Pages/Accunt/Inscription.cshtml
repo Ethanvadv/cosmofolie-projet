@@ -2,22 +2,28 @@
 @model cosmofolie.Pages.Accunt.InscriptionModel
 @{
 }
-<div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <h4>Informations de connexion</h4>
-            <div asp-validation-summary="All"></div>
-            <div class="form-group">
-                <label asp-for="Input.adresseemail"></label>
-                <input asp-for="Input.adresseemail" class="form-control" />
-                <span asp-validation-for="Input.adresseemail" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Input.motdepasse"></label>
-                <input asp-for="Input.motdepasse" class="form-control" />
-                <span asp-validation-for="Input.motdepasse" class="text-danger"></span>
-            </div>
-            <button type="submit" class="btn btn-primary">S'inscrire</button>
-        </form>
+<body class="ExplorationStyle">
+    <div class="container text-center pt-5 pb-5">
+        <main class="w-50 m-auto ">
+            <form method="post" class="container" style="mb-5">
+                <h4 class="signInLabel">Informations d'enregistrement</h4>
+                <div asp-validation-summary="All"></div>
+
+
+                <div class="form-group pt-3">
+                    <label asp-for="Input.adresseemail" class="signInLabel"></label>
+                    <input asp-for="Input.adresseemail" class="form-control" maxlength="50" />
+                    <span asp-validation-for="Input.adresseemail" class="text-danger"></span>
+                    <small id="emailHelp" class="form-text text-muted">On s'engage à ne jamais partager votre adresse</small>
+                </div>
+
+                <div class="form-group pt-6">
+                    <label asp-for="Input.motdepasse" class="signInLabel"></label>
+                    <input asp-for="Input.motdepasse" class="form-control" maxlength="50" />
+                    <span asp-validation-for="Input.motdepasse" class="text-danger"></span>
+                </div>
+                <button type="submit" class="w-50 btnLoginLogin btn btn-sm btn-dark">S'inscrire</button>
+            </form>
+        </main>
     </div>
-</div>
+</body>
