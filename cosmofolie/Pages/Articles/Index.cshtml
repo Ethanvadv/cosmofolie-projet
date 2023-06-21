@@ -7,7 +7,7 @@
     var comments = Model.Article.Comments;
 }
 
-<div class="container-fluid pb-5 pt-5" style = "background-color: grey ">
+<div class="container-fluid pb-5 pt-5" style = "background-color:#000 ">
     <div class="row">
         
         <div class="col-4">
@@ -39,36 +39,41 @@
      </div>
 </div>
 
-<h3>Comments</h3>
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Content</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var comment in comments)
-        {
+<div class="container-fluid">
+    <h3>Commentaire</h3>
+    <table class="table">
+        <thead>
             <tr>
-                <td>@comment.Content</td>
-                <td>
-                  @*  <a asp-page="./Edit" asp-route-id="@comment.Id">Edit</a> |
-                    <a asp-page="./Delete" asp-route-id="@comment.Id">Delete</a>*@
-                </td>
+                <th>Content</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var comment in comments)
+            {
+                <tr>
+                    <td>@comment.Content</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
 @if (SignInManager.IsSignedIn(User))
 {
-    <form method="post">
-        <input type="hidden" asp-for="CreateViews.ArticleId">
-        <div class="form-group">
-            <label asp-for="CreateViews.Content" class="control-label"></label>
-            <input asp-for="CreateViews.Content" class="form-control" />
-            <span asp-validation-for="CreateViews.Content" class="text-danger"></span>
-        </div>
-        <button type="submit" class="btn btn-primary">Create</button>
-    </form>
+    <div class="container ms-5 me-5">
+        <form method="post">
+            <input type="hidden" asp-for="CreateViews.ArticleId">
+            <div class="form-group">
+                <label asp-for="CreateViews.Content" class="control-label "></label>
+                <input asp-for="CreateViews.Content" class="form-control py-3" />
+                <span asp-validation-for="CreateViews.Content" class="text-danger"></span>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary btnCreerFilm">Create</button>
+            </div>
+            
+        </form>
+    </div>
+    
 }
